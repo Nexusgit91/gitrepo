@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./ProductList.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import {
   Container,
@@ -18,6 +21,7 @@ import Cart from "./Cart";
 import TypingAnimation from "../TypingAnimation/TypingAnimation";
 import VideoBanner from "../VideoBanner/VideoBanner";
 import IconGrid from "../IconGrid/IconGrid";
+import Timer from "./Timer/Timer";
 
 function Dress() {
   const products = dressProducts;
@@ -41,7 +45,7 @@ function Dress() {
   const handleClearCart = () => {
     setCartItems([]);
   };
-
+  //im here in the git branch
   // State for order form data and date/time
   const [orderFormData, setOrderFormData] = useState({
     name: "",
@@ -52,15 +56,23 @@ function Dress() {
 
   // Function to handle adding product to cart
   const handleAddToCart = (product) => {
+    const MAX_QUANTITY = 2; // Set the maximum quantity limit
+
     // Check if item is already in cart
     const index = cartItems.findIndex((item) => item.id === product.id);
     if (index > -1) {
-      // Item already exists, update quantity
+      // Item already exists, update quantity if it is less than the maximum quantity limit
       const newCartItems = [...cartItems];
-      newCartItems[index].quantity += 1;
-      setCartItems(newCartItems);
+      if (newCartItems[index].quantity < MAX_QUANTITY) {
+        newCartItems[index].quantity += 1;
+        setCartItems(newCartItems);
+      } else {
+        alert(
+          `Sorry, you can only order up to ${MAX_QUANTITY} units of this product.`
+        );
+      }
     } else {
-      // Item does not exist, add to cart
+      // Item does not exist, add to cart with quantity 1
       const newCartItem = { ...product, quantity: 1 };
       setCartItems([...cartItems, newCartItem]);
     }
@@ -115,10 +127,19 @@ function Dress() {
     }
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <>
       <VideoBanner videoName={"raymond"} />
       <IconGrid />
+
       <Container>
         <Row className="mb-3" style={{ marginTop: "60px" }}>
           <Col>
@@ -131,6 +152,7 @@ function Dress() {
             />
           </Col>
         </Row>
+
         <Row>
           <Col md={8}>
             <Row>
@@ -144,11 +166,55 @@ function Dress() {
                       boxShadow: "none",
                     }}
                   >
-                    <Card.Img variant="top" src={product.imgSrc} />
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "30px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: "50px",
+                          fontSize: "17px",
+                          fontWeight: "bold",
+                          width: "50px",
+                          backgroundColor: "red",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span style={{ color: "white" }}>30%</span>
+                      </div>
+                      <span style={{ fontWeight: "bold" }}>Discount</span>
+                    </div>
+                    <Card.Img
+                      variant="top"
+                      src={product.images[0]}
+                      style={{ width: "200px" }}
+                    />
+
                     <Card.Body>
-                      <Card.Title style={{ marginLeft: "100px" }}>
-                        $:{product.price}
-                      </Card.Title>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div style={{ marginLeft: "30px", fontSize: "20px" }}>
+                          <span
+                            style={{
+                              textDecoration: "line-through",
+                              marginRight: "10px",
+                            }}
+                          >
+                            ${product.price}
+                          </span>
+                          <span>${(product.price * 0.7).toFixed(2)}</span>
+                        </div>
+                      </div>
                       <Card.Title
                         style={{ marginLeft: "20px", width: "195px" }}
                       >
@@ -163,8 +229,9 @@ function Dress() {
                       <Button
                         variant="danger"
                         onClick={() => handleAddToCart(product)}
+                        disabled={product.quantity >= 5} // maximum allowed quantity is 5
                       >
-                        Add to Cart
+                        {product.quantity >= 5 ? "Out of Stock" : "Add to Cart"}
                       </Button>
                     </Card.Body>
                   </Card>
@@ -174,7 +241,12 @@ function Dress() {
           </Col>
 
           <Col md={4}>
-            <h1 style={{ marginLeft: "140px", fontSize: "60px" }}>Cart</h1>
+            <h1
+              style={{ marginLeft: "140px", fontSize: "60px" }}
+              className="cart-title"
+            >
+              Cart
+            </h1>
             <Cart
               handleClearCart={handleClearCart}
               cartItems={cartItems}
@@ -193,8 +265,14 @@ function Dress() {
             <Modal.Title>{selectedProduct?.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Image src={selectedProduct?.imgSrc} fluid />
-            <p>{selectedProduct?.description}</p>
+            <Slider {...settings}>
+              {selectedProduct?.images.map((src, index) => (
+                <div key={index}>
+                  <Image src={src} fluid />
+                </div>
+              ))}
+            </Slider>
+            <p style={{ marginTop: "40px" }}>{selectedProduct?.description}</p>
             <p>Price: {selectedProduct?.price}</p>
           </Modal.Body>
           <Modal.Footer>

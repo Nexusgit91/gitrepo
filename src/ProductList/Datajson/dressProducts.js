@@ -1,56 +1,58 @@
 export const dressProducts = [
   {
     id: 1,
-    name: "Iphone Pro 7",
-    description: "",
+    name: "Suit",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
     paymentMethod: "Credit Card",
-    imgSrc: require("../img/suit.jpg"),
+    images: [
+      require("../img/suit.jpg"),
+      require("../img/suit2.jpg"),
+      require("../img/suit3.jpg"),
+    ],
   },
   {
     id: 2,
-    name: "Iphone Pro 7",
-    description: "",
+    name: "Dress Shirt",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
     paymentMethod: "Credit Card",
-    imgSrc: require("../img/suit.jpg"),
+    images: [
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+    ],
   },
   {
     id: 3,
-    name: "Iphone Pro 7",
-    description: "",
+    name: "Trousers",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
     paymentMethod: "Credit Card",
-    imgSrc: require("../img/suit.jpg"),
+    images: [
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+    ],
   },
   {
     id: 4,
-    name: "Iphone Pro 7",
-    description: "",
+    name: "Shoes",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
     paymentMethod: "Credit Card",
-    imgSrc: require("../img/suit.jpg"),
-  },
-  {
-    id: 4,
-    name: "Iphone Pro 7",
-    description: "",
-    price: 9.99,
-    quantity: 2,
-    paymentMethod: "Credit Card",
-    imgSrc: require("../img/shirts.jpg"),
-  },
-  {
-    id: 4,
-    name: "Iphone Pro 7",
-    description: "",
-    price: 9.99,
-    quantity: 2,
-    paymentMethod: "Credit Card",
-    imgSrc: require("./shirt2.jpg"),
+    images: [
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+      require("../img/shirts.jpg"),
+    ],
   },
 ];

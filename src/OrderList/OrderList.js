@@ -136,7 +136,7 @@ function OrderList() {
                 $
                 {order.cartItems
                   .reduce(
-                    (total, item) => total + item.price * item.quantity,
+                    (total, item) => total + item.price * item.quantity * 0.7,
                     0
                   )
                   .toFixed(2)}
@@ -156,13 +156,14 @@ function OrderList() {
                       <tr key={item.id}>
                         <td>
                           <img
-                            src={item.imgSrc}
+                            src={item.imgSrc || item.images[0]}
                             alt={item.name}
                             height="50px"
                           />
                         </td>
                         <td>{item.name}</td>
-                        <td>${item.price.toFixed(2)}</td>
+                        <td>${(item.price * 0.7).toFixed(2)}</td>
+
                         <td>{item.quantity}</td>
                       </tr>
                     ))}
