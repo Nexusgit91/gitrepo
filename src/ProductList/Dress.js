@@ -135,6 +135,7 @@ function Dress() {
     slidesToScroll: 1,
   };
 
+  //this is main branch
   return (
     <>
       <VideoBanner videoName={"raymond"} />
@@ -170,7 +171,7 @@ function Dress() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        marginLeft: "30px",
+                        marginLeft: "60px",
                       }}
                     >
                       <div
@@ -193,7 +194,7 @@ function Dress() {
                     <Card.Img
                       variant="top"
                       src={product.images[0]}
-                      style={{ width: "200px" }}
+                      style={{ width: "250px" }}
                     />
 
                     <Card.Body>
