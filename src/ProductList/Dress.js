@@ -45,7 +45,7 @@ function Dress() {
   const handleClearCart = () => {
     setCartItems([]);
   };
-  //im here in the git branch
+
   // State for order form data and date/time
   const [orderFormData, setOrderFormData] = useState({
     name: "",
@@ -77,7 +77,7 @@ function Dress() {
       setCartItems([...cartItems, newCartItem]);
     }
   };
-
+  //hello from main
   // Function to handle removing product from cart
   const handleRemoveFromCart = (product) => {
     // Check if item is in cart
