@@ -126,6 +126,9 @@ function Ordername({ email, name, lastName }) {
         <h1>
           All Orders of {name} {lastName}
         </h1>
+        <h5 style={{ backgroundColor: "yellow", width: "45%" }}>
+          *No cancellation will allowed after 12 hours from the order time{" "}
+        </h5>
         <Form
           style={{ marginBottom: "20px", marginTop: "40px", width: "129%" }}
         >
@@ -168,7 +171,7 @@ function Ordername({ email, name, lastName }) {
                   $
                   {order.cartItems
                     .reduce(
-                      (total, item) => total + item.price * item.quantity,
+                      (total, item) => total + item.price * item.quantity * 0.7,
                       0
                     )
                     .toFixed(2)}
@@ -188,13 +191,13 @@ function Ordername({ email, name, lastName }) {
                         <tr key={item.id}>
                           <td>
                             <img
-                              src={item.imgSrc}
+                              src={item.imgSrc || item.images[0]}
                               alt={item.name}
                               height="50px"
                             />
                           </td>
                           <td>{item.name}</td>
-                          <td>${item.price.toFixed(2)}</td>
+                          <td>${(item.price * 0.7).toFixed(2)}</td>
                           <td>{item.quantity}</td>
                         </tr>
                       ))}
@@ -202,20 +205,36 @@ function Ordername({ email, name, lastName }) {
                   </Table>
                 </td>
                 <td>
-                  <button
-                    className="heading-container"
-                    style={{
-                      marginLeft: "33px",
-                      borderRadius: "200px",
-                      border: "none",
-                    }}
-                    onClick={() => {
-                      setOrderToDelete(order);
-                      setShowDeleteModal(true);
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
+                  {order.timeLeft !== "Expired" ||
+                  new Date().getTime() - new Date(order.date).getTime() >
+                    43200000 ? (
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        setOrderToDelete(order);
+                        setShowDeleteModal(true);
+                      }}
+                      disabled={
+                        checkedOrders[order._id] ||
+                        new Date().getTime() - new Date(order.date).getTime() >
+                          43200000 ||
+                        order.checked // 43200000 = 12 hours in milliseconds
+                      }
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        setOrderToDelete(order);
+                        setShowDeleteModal(true);
+                      }}
+                      disabled
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  )}
                 </td>
                 <td>
                   {sessionStorage.getItem("email") === "nexo91@gmail.com" ? (

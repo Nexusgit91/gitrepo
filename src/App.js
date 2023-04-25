@@ -16,6 +16,7 @@ import ShopOwners from "./RegisterShops/ShopOwners";
 import ProductTable from "./ProductTable/ProductTable";
 import Electronics from "./ProductList/Electronics";
 import NotFound from "./404/NotFound";
+import DressForm from "./Dress/DressForm";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/electronics" component={Electronics} />
           <Route exact path="/producttable" component={ProductTable} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/dressForm" component={DressForm} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/ordername" component={Ordername} />

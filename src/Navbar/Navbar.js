@@ -51,7 +51,7 @@ function Navibar() {
       expand="md"
       className="fixed-top"
       style={{
-        height: "40px",
+        height: "50px",
         marginLeft: "-10px",
         backgroundColor: "white",
         margintTop: "10px",
