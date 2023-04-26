@@ -23,6 +23,7 @@ import VideoBanner from "../../VideoBanner/VideoBanner";
 import IconGrid from "../../IconGrid/IconGrid";
 import Timer from "../Timer/Timer";
 import DressCart from "./DressCart";
+import TimeComponent from "../Timer/TimeComponet";
 
 function Dress() {
   const products = dressProducts;
@@ -206,7 +207,7 @@ function Dress() {
                     <Card.Img
                       variant="top"
                       src={product.images[0]}
-                      style={{ width: "200px" }}
+                      style={{ width: "250px" }}
                     />
 
                     <Card.Body>
@@ -292,8 +293,24 @@ function Dress() {
           </Col>
 
           <Col md={4}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h1
+                style={{
+                  textAlign: "center",
+                  fontSize: "36px",
+                  color: "#ff9900",
+                  fontWeight: "bold",
+                  fontFamily: "Arial, sans-serif",
+                  textShadow: "2px 2px 5px #333333",
+                  margin: "auto",
+                }}
+              >
+                Sales End's In
+              </h1>
+            </div>
+            <TimeComponent />
             <h1
-              style={{ marginLeft: "140px", fontSize: "60px" }}
+              style={{ marginLeft: "170px", fontSize: "60px" }}
               className="cart-title"
             >
               Cart
