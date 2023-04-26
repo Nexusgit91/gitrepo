@@ -191,11 +191,7 @@ function Dress() {
                       </div>
                       <span style={{ fontWeight: "bold" }}>Discount</span>
                     </div>
-                    <Card.Img
-                      variant="top"
-                      src={product.images[0]}
-                      style={{ width: "250px" }}
-                    />
+                    <Card.Img variant="top" src={product.images[0]} />
 
                     <Card.Body>
                       <div
