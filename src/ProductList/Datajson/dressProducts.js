@@ -6,6 +6,7 @@ export const dressProducts = [
       "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
+    sizes: ["S", "M", "L", "XL"],
     paymentMethod: "Credit Card",
     images: [
       require("../img/suit.jpg"),
@@ -20,6 +21,7 @@ export const dressProducts = [
       "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
+    sizes: ["S", "M", "L", "XL"],
     paymentMethod: "Credit Card",
     images: [
       require("../img/shirts.jpg"),
@@ -34,6 +36,7 @@ export const dressProducts = [
       "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
     price: 9.99,
     quantity: 2,
+    sizes: ["S", "M", "L", "XL"],
     paymentMethod: "Credit Card",
     images: [
       require("../img/shirts.jpg"),
@@ -49,6 +52,7 @@ export const dressProducts = [
     price: 9.99,
     quantity: 2,
     paymentMethod: "Credit Card",
+    sizes: ["S", "M", "L", "XL"],
     images: [
       require("../img/shirts.jpg"),
       require("../img/shirts.jpg"),
