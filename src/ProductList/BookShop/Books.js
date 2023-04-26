@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./ProductList.css";
-import VideoBanner from "../VideoBanner/VideoBanner";
-import IconGrid from "../IconGrid/IconGrid";
+import "../ProductList.css";
+
 import {
   Container,
   Row,
@@ -14,11 +13,15 @@ import {
   Image,
 } from "react-bootstrap";
 
-import { products } from "./Datajson/electronicsProducts";
-import Cart from "./Cart";
-import TypingAnimation from "../TypingAnimation/TypingAnimation";
+import { bookProducts } from "../Datajson/bookProduct";
+import Cart from "../Cart";
+import TypingAnimation from "../../TypingAnimation/TypingAnimation";
+import VideoBanner from "../../VideoBanner/VideoBanner";
+import IconGrid from "../../IconGrid/IconGrid";
+import BookCart from "./BookCart";
 
-function Electronics() {
+function Books() {
+  const products = bookProducts;
   // State for selected product and cart items
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -103,6 +106,7 @@ function Electronics() {
         setCartItems([]);
         setOrderFormData({ name: "", email: "", address: "" });
         // Redirect to payment page
+        window.location.replace("/pay");
       } else {
         // Order submission failed
         console.log("Failed to submit order");
@@ -114,7 +118,7 @@ function Electronics() {
 
   return (
     <>
-      <VideoBanner videoName={"m1pro"} />
+      <VideoBanner videoName={"classmate"} />
       <IconGrid />
       <Container>
         <Row className="mb-3" style={{ marginTop: "60px" }}>
@@ -172,7 +176,8 @@ function Electronics() {
 
           <Col md={4}>
             <h1 style={{ marginLeft: "140px", fontSize: "60px" }}>Cart</h1>
-            <Cart
+
+            <BookCart
               handleClearCart={handleClearCart}
               cartItems={cartItems}
               handleRemoveFromCart={handleRemoveFromCart}
@@ -214,4 +219,4 @@ function Electronics() {
   );
 }
 
-export default Electronics;
+export default Books;

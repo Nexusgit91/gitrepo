@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./ProductList.css";
+import "../ProductList.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { FaChevronDown } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -16,15 +16,18 @@ import {
   Image,
 } from "react-bootstrap";
 
-import { dressProducts } from "./Datajson/dressProducts";
-import Cart from "./Cart";
-import TypingAnimation from "../TypingAnimation/TypingAnimation";
-import VideoBanner from "../VideoBanner/VideoBanner";
-import IconGrid from "../IconGrid/IconGrid";
-import Timer from "./Timer/Timer";
+import { dressProducts } from "../Datajson/dressProducts";
+import Cart from "../Cart";
+import TypingAnimation from "../../TypingAnimation/TypingAnimation";
+import VideoBanner from "../../VideoBanner/VideoBanner";
+import IconGrid from "../../IconGrid/IconGrid";
+import Timer from "../Timer/Timer";
+import DressCart from "./DressCart";
 
 function Dress() {
   const products = dressProducts;
+  const [selectedSize, setSelectedSize] = useState(null);
+
   // State for selected product and cart items
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -59,10 +62,14 @@ function Dress() {
     const MAX_QUANTITY = 2; // Set the maximum quantity limit
 
     // Check if item is already in cart
-    const index = cartItems.findIndex((item) => item.id === product.id);
+    const index = cartItems.findIndex(
+      (item) => item.id === product.id && item.size === selectedSize
+    );
+
     if (index > -1) {
       // Item already exists, update quantity if it is less than the maximum quantity limit
       const newCartItems = [...cartItems];
+
       if (newCartItems[index].quantity < MAX_QUANTITY) {
         newCartItems[index].quantity += 1;
         setCartItems(newCartItems);
@@ -73,10 +80,16 @@ function Dress() {
       }
     } else {
       // Item does not exist, add to cart with quantity 1
-      const newCartItem = { ...product, quantity: 1 };
+      if (!selectedSize) {
+        alert("Please select a size before adding to cart.");
+        return;
+      }
+
+      const newCartItem = { ...product, quantity: 1, size: selectedSize };
       setCartItems([...cartItems, newCartItem]);
     }
   };
+
   //hello from main
   // Function to handle removing product from cart
   const handleRemoveFromCart = (product) => {
@@ -201,6 +214,7 @@ function Dress() {
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
+                          alignItems: "center",
                         }}
                       >
                         <div style={{ marginLeft: "30px", fontSize: "20px" }}>
@@ -213,6 +227,43 @@ function Dress() {
                             ${product.price}
                           </span>
                           <span>${(product.price * 0.7).toFixed(2)}</span>
+
+                          <Form
+                            style={{
+                              width: "90px",
+                              marginTop: "10px",
+                              marginBottom: "10px",
+                            }}
+                          >
+                            <Form.Group controlId="formSize">
+                              <div style={{ position: "relative" }}>
+                                <Form.Control
+                                  as="select"
+                                  onChange={(e) =>
+                                    setSelectedSize(e.target.value)
+                                  }
+                                  style={{ paddingRight: "30px" }}
+                                >
+                                  <option value=""> Size</option>
+                                  {product.sizes.map((size) => (
+                                    <option value={size} key={size}>
+                                      {size}
+                                    </option>
+                                  ))}
+                                </Form.Control>
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    right: "10px",
+                                    transform: "translateY(-50%)",
+                                  }}
+                                >
+                                  <FaChevronDown size={20} />
+                                </div>
+                              </div>
+                            </Form.Group>
+                          </Form>
                         </div>
                       </div>
                       <Card.Title
@@ -228,7 +279,7 @@ function Dress() {
                       </Button>{" "}
                       <Button
                         variant="danger"
-                        onClick={() => handleAddToCart(product)}
+                        onClick={() => handleAddToCart(product, selectedSize)}
                         disabled={product.quantity >= 5} // maximum allowed quantity is 5
                       >
                         {product.quantity >= 5 ? "Out of Stock" : "Add to Cart"}
@@ -247,7 +298,7 @@ function Dress() {
             >
               Cart
             </h1>
-            <Cart
+            <DressCart
               handleClearCart={handleClearCart}
               cartItems={cartItems}
               handleRemoveFromCart={handleRemoveFromCart}

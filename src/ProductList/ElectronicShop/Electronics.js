@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./ProductList.css";
-
+import "../ProductList.css";
+import VideoBanner from "../../VideoBanner/VideoBanner";
+import IconGrid from "../../IconGrid/IconGrid";
 import {
   Container,
   Row,
@@ -13,14 +14,11 @@ import {
   Image,
 } from "react-bootstrap";
 
-import { bookProducts } from "./Datajson/bookProduct";
-import Cart from "./Cart";
-import TypingAnimation from "../TypingAnimation/TypingAnimation";
-import VideoBanner from "../VideoBanner/VideoBanner";
-import IconGrid from "../IconGrid/IconGrid";
+import { products } from "../Datajson/electronicsProducts";
 
-function Books() {
-  const products = bookProducts;
+import ElectronicCart from "./ElectronicCart";
+
+function Electronics() {
   // State for selected product and cart items
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -105,7 +103,6 @@ function Books() {
         setCartItems([]);
         setOrderFormData({ name: "", email: "", address: "" });
         // Redirect to payment page
-        window.location.replace("/pay");
       } else {
         // Order submission failed
         console.log("Failed to submit order");
@@ -117,7 +114,7 @@ function Books() {
 
   return (
     <>
-      <VideoBanner videoName={"classmate"} />
+      <VideoBanner videoName={"m1pro"} />
       <IconGrid />
       <Container>
         <Row className="mb-3" style={{ marginTop: "60px" }}>
@@ -175,7 +172,8 @@ function Books() {
 
           <Col md={4}>
             <h1 style={{ marginLeft: "140px", fontSize: "60px" }}>Cart</h1>
-            <Cart
+
+            <ElectronicCart
               handleClearCart={handleClearCart}
               cartItems={cartItems}
               handleRemoveFromCart={handleRemoveFromCart}
@@ -217,4 +215,4 @@ function Books() {
   );
 }
 
-export default Books;
+export default Electronics;

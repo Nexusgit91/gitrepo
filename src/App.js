@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import OrderList from "./OrderList/OrderList";
-import Dress from "./ProductList/Dress";
-import Books from "./ProductList/Books";
+import Dress from "./ProductList/DressShop/Dress";
+import Books from "./ProductList/BookShop/Books";
 import Navibar from "./Navbar/Navbar";
 import TypingAnimation from "./TypingAnimation/TypingAnimation";
 
@@ -14,7 +14,7 @@ import Profile from "./Profile/Profile";
 import Register from "./RegisterShops/Register";
 import ShopOwners from "./RegisterShops/ShopOwners";
 import ProductTable from "./ProductTable/ProductTable";
-import Electronics from "./ProductList/Electronics";
+import Electronics from "./ProductList/ElectronicShop/Electronics";
 import NotFound from "./404/NotFound";
 import DressForm from "./Dress/DressForm";
 import QuantityForm from "./ProductList/Datajson/QuantityDress";

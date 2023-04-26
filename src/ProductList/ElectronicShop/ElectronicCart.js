@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import "./Css/Cart.css";
-import IconGrid from "../IconGrid/IconGrid";
-import "./ProductList.css";
-function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
+import "../Css/Cart.css";
+
+import "../ProductList.css";
+function ElectronicCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   const history = useHistory();
   const userEmail = window.sessionStorage.getItem("email");
   const [orderFormData, setOrderFormData] = useState({
@@ -180,4 +180,4 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   );
 }
 
-export default Cart;
+export default ElectronicCart;
