@@ -67,7 +67,7 @@ function ElectronicCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   return (
     <>
       <Container style={{ marginBottom: "20px" }}>
-        <Table className="my-5">
+        <Table className="my-5" style={{ width: "450px" }}>
           <thead>
             <tr>
               <th>id</th>
@@ -143,7 +143,10 @@ function ElectronicCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="totalCost">Total Cost:</label>
+            <label htmlFor="totalCost">
+              {" "}
+              Total Cost :Rs{totalPrice.toFixed(2)}+ 0 delivery charges
+            </label>
             <input
               className="form-control"
               type="text"

@@ -48,7 +48,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
         console.log("Order submitted successfully");
         // Clear cart and order form data
         setOrderFormData({ name: "", email: "", address: "" });
-        // You may also want to update the cart items in the parent component
+
         // Clear cart items
         handleClearCart();
         // Store the total price in a session cookie

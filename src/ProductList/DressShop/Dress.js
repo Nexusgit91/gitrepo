@@ -24,7 +24,7 @@ import IconGrid from "../../IconGrid/IconGrid";
 import Timer from "../Timer/Timer";
 import DressCart from "./DressCart";
 import TimeComponent from "../Timer/TimeComponet";
-
+//Component
 function Dress() {
   const products = dressProducts;
   const [selectedSize, setSelectedSize] = useState(null);

@@ -55,6 +55,7 @@ function Navibar() {
         marginLeft: "-10px",
         backgroundColor: "white",
         margintTop: "10px",
+        color: "black",
       }}
     >
       <Navbar.Brand href="/">

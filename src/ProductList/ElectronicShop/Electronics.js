@@ -171,7 +171,7 @@ function Electronics() {
           </Col>
 
           <Col md={4}>
-            <h1 style={{ marginLeft: "140px", fontSize: "60px" }}>Cart</h1>
+            <h1 style={{ marginLeft: "200px", fontSize: "60px" }}>Cart</h1>
 
             <ElectronicCart
               handleClearCart={handleClearCart}
