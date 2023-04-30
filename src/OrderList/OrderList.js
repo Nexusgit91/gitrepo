@@ -164,7 +164,7 @@ function OrderList() {
                         </td>
                         <td>{item.name}</td>
                         <td>{item.size || "none"}</td>
-                        <td>${(item.price * 0.7).toFixed(2)}</td>
+                        <td>${(item.price * 0.9).toFixed(2)}</td>
 
                         <td>{item.quantity}</td>
                       </tr>

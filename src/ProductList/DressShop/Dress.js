@@ -17,7 +17,7 @@ import {
 } from "react-bootstrap";
 
 import { dressProducts } from "../Datajson/dressProducts";
-import Cart from "../Cart";
+
 import TypingAnimation from "../../TypingAnimation/TypingAnimation";
 import VideoBanner from "../../VideoBanner/VideoBanner";
 import IconGrid from "../../IconGrid/IconGrid";
@@ -200,14 +200,14 @@ function Dress() {
                           justifyContent: "center",
                         }}
                       >
-                        <span style={{ color: "white" }}>30%</span>
+                        <span style={{ color: "white" }}>10%</span>
                       </div>
                       <span style={{ fontWeight: "bold" }}>Discount</span>
                     </div>
                     <Card.Img
                       variant="top"
                       src={product.images[0]}
-                      style={{ width: "250px" }}
+                      style={{ width: "300px" }}
                     />
 
                     <Card.Body>
@@ -227,7 +227,7 @@ function Dress() {
                           >
                             ${product.price}
                           </span>
-                          <span>${(product.price * 0.7).toFixed(2)}</span>
+                          <span>${(product.price * 0.9).toFixed(2)}</span>
 
                           <Form
                             style={{
@@ -341,7 +341,7 @@ function Dress() {
               ))}
             </Slider>
             <p style={{ marginTop: "40px" }}>{selectedProduct?.description}</p>
-            <p>Price: {selectedProduct?.price}</p>
+            <p>Price: {selectedProduct?.price * 0.9}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button

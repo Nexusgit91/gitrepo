@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -14,6 +20,10 @@ function Login() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (event) => {
@@ -27,8 +37,8 @@ function Login() {
       // Login successful, redirect to profile page
       const data = await response.json();
       window.sessionStorage.setItem("email", email); // store email in session storage
-      window.location.replace("/profile");
-      alert("user logged in");
+      window.location.replace("/");
+      // alert("user logged in");
     } else {
       alert("Invalid email or password");
       // Login failed, display error message
@@ -63,9 +73,16 @@ function Login() {
           <Form.Label className="d-flex align-items-center">
             <FontAwesomeIcon icon={faLock} className="me-2" />
             Password:
+            <Button
+              variant="link"
+              onClick={handleTogglePassword}
+              className="ms-auto"
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </Button>
           </Form.Label>
           <Form.Control
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={handlePasswordChange}
           />
@@ -75,6 +92,9 @@ function Login() {
         </Button>
         <p className="mt-3">
           Don't have an account? <Button onClick={signUpHandler}>Signup</Button>
+        </p>
+        <p className="mt-3">
+          Forgot your password? <Link to="/forgot-password">Reset it here</Link>
         </p>
       </Form>
     </div>

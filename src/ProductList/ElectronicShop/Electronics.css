@@ -1,0 +1,11 @@
+.containeree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.hh1 {
+  font-size: 48px;
+  color: #333;
+}

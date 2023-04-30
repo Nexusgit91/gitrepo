@@ -54,7 +54,7 @@ function ElectronicCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
         handleClearCart();
         // Store the total price in a session cookie
         window.sessionStorage.setItem("totalPrice", totalPrice.toFixed(2));
-        window.location.replace("/pay");
+        window.location.replace("/profile");
       }
     } catch (err) {
       console.error(err);

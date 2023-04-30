@@ -18,6 +18,8 @@ import Electronics from "./ProductList/ElectronicShop/Electronics";
 import NotFound from "./404/NotFound";
 import DressForm from "./Dress/DressForm";
 import QuantityForm from "./ProductList/Datajson/QuantityDress";
+import ForgotPassword from "./Login/Forgot/ForgotPassword";
+import ResetPassword from "./Login/Rest/ResetPassword";
 
 function App() {
   return (
@@ -38,7 +40,12 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/shopowner" component={ShopOwners} />
           <Route exact path="/Books" component={Books} />
-
+          <Route exact path="/forgot-password" component={ForgotPassword} />
+          <Route
+            exact
+            path="/reset-password/:token"
+            component={ResetPassword}
+          />
           <Route exact path="/OrderList" component={OrderList} />
         </Switch>
       </Router>

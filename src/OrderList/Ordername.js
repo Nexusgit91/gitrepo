@@ -171,7 +171,7 @@ function Ordername({ email, name, lastName }) {
                   $
                   {order.cartItems
                     .reduce(
-                      (total, item) => total + item.price * item.quantity * 0.7,
+                      (total, item) => total + item.price * item.quantity * 0.9,
                       0
                     )
                     .toFixed(2)}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../ProductList.css";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   Container,
   Row,
@@ -28,7 +30,13 @@ function Books() {
   // State for search query
   const [searchQuery, setSearchQuery] = useState("");
   const keywords = searchQuery.toLowerCase().split(" ");
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   const filteredProducts = products.filter((product) => {
     const productName = product.name.toLowerCase();
     let matchCount = 0;
@@ -145,10 +153,46 @@ function Books() {
                       boxShadow: "none",
                     }}
                   >
-                    <Card.Img variant="top" src={product.imgSrc} />
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "30px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: "50px",
+                          fontSize: "17px",
+                          fontWeight: "bold",
+                          width: "50px",
+                          backgroundColor: "red",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span style={{ color: "white" }}>10%</span>
+                      </div>
+                      <span style={{ fontWeight: "bold" }}>Discount</span>
+                    </div>
+                    <Card.Img
+                      variant="top"
+                      src={product.images[0]}
+                      style={{ width: "250px", height: "350px" }}
+                    />
                     <Card.Body>
-                      <Card.Title style={{ marginLeft: "100px" }}>
-                        $:{product.price}
+                      <Card.Title style={{ marginLeft: "70px" }}>
+                        <span
+                          style={{
+                            textDecoration: "line-through",
+                            marginRight: "10px",
+                          }}
+                        >
+                          ${product.price}
+                        </span>
+                        <span>${(product.price * 0.9).toFixed(2)}</span>
                       </Card.Title>
                       <Card.Title
                         style={{ marginLeft: "20px", width: "195px" }}
@@ -195,9 +239,15 @@ function Books() {
             <Modal.Title>{selectedProduct?.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Image src={selectedProduct?.imgSrc} fluid />
-            <p>{selectedProduct?.description}</p>
-            <p>Price: {selectedProduct?.price}</p>
+            <Slider {...settings}>
+              {selectedProduct?.images.map((src, index) => (
+                <div key={index}>
+                  <Image src={src} fluid />
+                </div>
+              ))}
+            </Slider>
+            <p style={{ marginTop: "40px" }}>{selectedProduct?.description}</p>
+            <p>Price: {selectedProduct?.price * 0.9}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button

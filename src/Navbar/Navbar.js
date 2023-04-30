@@ -75,22 +75,25 @@ function Navibar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto" style={{ fontWeight: "bold" }}>
           <Nav.Link href="/">Home</Nav.Link>
-          <NavDropdown title="Categories" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/electronics">Electronics</NavDropdown.Item>
-            <NavDropdown.Item href="/">Dress</NavDropdown.Item>
-            <NavDropdown.Item href="/books">Books</NavDropdown.Item>
-            <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-            <NavDropdown.Item href="/shopowner">RegisterShops</NavDropdown.Item>
-            <NavDropdown.Item href="/producttable">
-              ProductTable
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/all-categories">
-              All Categories
-            </NavDropdown.Item>
-          </NavDropdown>
-          <Nav.Link href="/orderList">Orders</Nav.Link>
-          <Nav.Link href="/profile">Your Orders</Nav.Link>
+          <Nav.Link href="/books">Books</Nav.Link>
+          <Nav.Link href="/electronics">Electronics</Nav.Link>
+
+          {name === "nexo 91" ? (
+            <NavDropdown title="Admin" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/orderList">Orders</NavDropdown.Item>
+              <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+              <NavDropdown.Item href="/shopowner">
+                RegisterShops
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/producttable">
+                ProductTable
+              </NavDropdown.Item>
+            </NavDropdown>
+          ) : (
+            ""
+          )}
+
+          {name ? <Nav.Link href="/profile">Your Orders</Nav.Link> : ""}
           {isLoggedIn ? (
             <>
               <Nav.Link>Hello, {name}</Nav.Link>
@@ -113,7 +116,7 @@ function Navibar() {
           fontWeight: "bold",
         }}
       >
-        Begumpull Market
+        SadarBazar Market
       </h>
     </Navbar>
   );

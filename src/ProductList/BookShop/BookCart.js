@@ -61,7 +61,7 @@ function BookCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
     }
   };
   const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + item.price * item.quantity * 0.9,
     0
   );
   return (
@@ -83,10 +83,10 @@ function BookCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
               <tr key={item.id} className="heading-container">
                 <td>{index + 1}</td>
                 <td>
-                  <img src={item.imgSrc} alt={item.name} height="50px" />
+                  <img src={item.images[0]} alt={item.name} height="50px" />
                 </td>
                 <td>{item.name}</td>
-                <td>${item.price.toFixed(2)}</td>
+                <td>${item.price * (0.9).toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
                   <Button
@@ -169,8 +169,9 @@ function BookCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
           width: "400px",
         }}
       >
-        <h4> *Require login to submit the order</h4>
-        <h4> *Orderd will be delivered within 48 hours</h4>
+        <h5> *Require login to submit the order</h5>
+        <h5> *Only cash on delivery </h5>
+        <h5> *Orderd will be delivered within 48 hours</h5>
         <br></br>* Notice the name of the product contain <b> s_id</b> it stands
         for
         <b> shop_id </b> it realted to the shop owners not to the customers so

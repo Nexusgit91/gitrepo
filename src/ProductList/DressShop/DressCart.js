@@ -59,7 +59,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
     }
   };
   const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity * 0.7,
+    (total, item) => total + item.price * item.quantity * 0.9,
     0
   );
 
@@ -87,7 +87,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
                 </td>
                 <td>{item.name}</td>
                 <td>{item.size}</td>
-                <td>${(item.price * 0.7).toFixed(2)}</td>
+                <td>${(item.price * 0.9).toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
                   <Button
