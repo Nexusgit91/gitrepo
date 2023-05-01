@@ -3,6 +3,7 @@ import { Container, Form, Button, Alert } from "react-bootstrap";
 import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SignUp.css"; // import custom CSS styles
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
   const [formState, setFormState] = useState({
@@ -13,7 +14,7 @@ function SignUp() {
     confirmPassword: "",
   });
   const [emailTaken, setEmailTaken] = useState(false);
-
+  const history = useHistory();
   function handleChange(event) {
     const { name, value } = event.target;
     setFormState((prevFormState) => ({
@@ -51,7 +52,8 @@ function SignUp() {
           confirmPassword: "",
         });
         setEmailTaken(false);
-        window.location.replace("/login");
+        history.push("/login");
+        // window.location.replace("/login");
       })
       .catch((error) => {
         console.error("Error sending data to backend:", error);
@@ -61,7 +63,7 @@ function SignUp() {
   return (
     <Container
       className="signup-container"
-      style={{ width: "30%", marginTop: "100px" }}
+      style={{ maxWidth: "600px", margin: "auto", marginTop: "100px" }}
     >
       <h1>Sign Up</h1>
       {emailTaken && (
@@ -140,12 +142,7 @@ function SignUp() {
             required
           />
         </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-          className="submit-btn"
-          style={{ marginTop: "30px" }}
-        >
+        <Button variant="primary" type="submit">
           Sign Up
         </Button>
       </Form>

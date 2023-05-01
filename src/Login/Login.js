@@ -55,7 +55,12 @@ function Login() {
       <Form
         onSubmit={handleSubmit}
         className="border p-4 rounded"
-        style={{ marginTop: "100px", width: "30%", border: "2px solid black" }}
+        style={{
+          marginTop: "100px",
+          width: "90%",
+          maxWidth: "500px",
+          border: "2px solid black",
+        }}
       >
         <h1 className="text-center mb-4">Login</h1>
         <Form.Group>

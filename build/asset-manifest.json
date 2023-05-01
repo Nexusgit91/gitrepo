@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.aef68a1a.css",
+    "main.js": "/static/js/main.0326f30a.js",
+    "static/media/m1pro.mp4": "/static/media/m1pro.2f25bdf5397fa156ba98.mp4",
+    "static/media/raymond.mp4": "/static/media/raymond.3655fc527e3ec6ae22d9.mp4",
+    "static/media/apple watch.mp4": "/static/media/apple watch.ba251d9ec09bf5d24e7b.mp4",
+    "static/media/videobanner.mp4": "/static/media/videobanner.3a453b5f9a9ea85423e2.mp4",
+    "static/media/Galaxy S23 Ultra_ Official Introduction Film _ Samsung.mp4": "/static/media/Galaxy S23 Ultra_ Official Introduction Film _ Samsung.259d0aee4d810233962a.mp4",
+    "static/media/AirPods Pro _ Rebuilt from the sound up _ Apple.mp4": "/static/media/AirPods Pro _ Rebuilt from the sound up _ Apple.520a86785a3a86a2f5d9.mp4",
+    "static/media/classmate.mp4": "/static/media/classmate.e4ae96934c58a18c2cb2.mp4",
+    "static/media/dynamic.mp4": "/static/media/dynamic.6f2e5774a50e9de97452.mp4",
+    "static/media/Delivery Service Animated Promo Video.mp4": "/static/media/Delivery Service Animated Promo Video.3cf0741cbbe8158b2da1.mp4",
+    "static/media/suit.jpg": "/static/media/suit.ab12c2e7b46033a2fe32.jpg",
+    "static/media/shirts.jpg": "/static/media/shirts.92c7f5beeb93fa9493d7.jpg",
+    "static/media/AppleWatch.jpg": "/static/media/AppleWatch.19b1123e60989922f25d.jpg",
+    "static/media/suit3.jpg": "/static/media/suit3.9658c07d567d3ba8b7bf.jpg",
+    "static/media/book2.jpg": "/static/media/book2.fa4279dd8a2e5bea224b.jpg",
+    "static/media/Galaxy-S23.jpg": "/static/media/Galaxy-S23.72e04aca4e36eb9345f6.jpg",
+    "static/media/book1.jpg": "/static/media/book1.cc03c13c3abd5421ffba.jpg",
+    "static/media/hhh.jpg": "/static/media/hhh.a13da2fdd7a2a024814a.jpg",
+    "static/media/suit2.jpg": "/static/media/suit2.f7d2b33c316a65bd0ab7.jpg",
+    "static/media/airdopes.webp": "/static/media/airdopes.a1580ca4775a5e0a08d1.webp",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.aef68a1a.css.map": "/static/css/main.aef68a1a.css.map",
+    "main.0326f30a.js.map": "/static/js/main.0326f30a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aef68a1a.css",
+    "static/js/main.0326f30a.js"
+  ]
+}
