@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import "../ProductList.css";
-
+import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronDown } from "react-icons/fa";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Modal,
-  Form,
-  Table,
-  Image,
-} from "react-bootstrap";
+
+import { Container, Row, Col, Form } from "react-bootstrap";
 
 import { dressProducts } from "../Datajson/dressProducts";
 
@@ -24,15 +14,16 @@ import IconGrid from "../../IconGrid/IconGrid";
 import DressCart from "./DressCart";
 import TimeComponent from "../Timer/TimeComponet";
 import ProductModal from "./ProductModal";
-//Component
+
+import ProductCard from "./ProductCard";
+
 function Dress() {
   const products = dressProducts;
   const [selectedSize, setSelectedSize] = useState(null);
 
-  // State for selected product and cart items
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  // State for search query
+
   const [searchQuery, setSearchQuery] = useState("");
   const keywords = searchQuery.toLowerCase().split(" ");
 
@@ -110,7 +101,13 @@ function Dress() {
   };
 
   // Function to handle submitting order
-  const handleSubmitOrder = async (e) => {
+  const handleSubmitOrder = async (
+    e,
+    cartItems,
+    orderFormData,
+    setCartItems,
+    setOrderFormData
+  ) => {
     e.preventDefault();
     const orderData = {
       ...orderFormData,
@@ -118,12 +115,8 @@ function Dress() {
       dateTime: new Date().toLocaleString(),
     };
     try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderData),
-      });
-      if (response.ok) {
+      const response = await axios.post("/api/orders", orderData);
+      if (response.status === 201) {
         // Order submitted successfully
         console.log("Order submitted successfully");
         // Clear cart and order form data
@@ -138,14 +131,6 @@ function Dress() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
   };
 
   return (
@@ -171,121 +156,13 @@ function Dress() {
             <Row>
               {filteredProducts.map((product) => (
                 <Col md={4} key={product.id} className="heading-container">
-                  <Card
-                    className="product-card"
-                    style={{
-                      border: "none",
-                      marginBottom: "20px",
-                      boxShadow: "none",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginLeft: "30px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: "50px",
-                          fontSize: "17px",
-                          fontWeight: "bold",
-                          width: "50px",
-                          backgroundColor: "red",
-                          borderRadius: "50%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <span style={{ color: "white" }}>10%</span>
-                      </div>
-                      <span style={{ fontWeight: "bold" }}>Discount</span>
-                    </div>
-                    <Card.Img
-                      variant="top"
-                      src={product.images[0]}
-                      style={{ width: "300px" }}
-                    />
-
-                    <Card.Body>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div style={{ marginLeft: "30px", fontSize: "20px" }}>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              marginRight: "10px",
-                            }}
-                          >
-                            ${product.price}
-                          </span>
-                          <span>${(product.price * 0.9).toFixed(2)}</span>
-
-                          <Form
-                            style={{
-                              width: "90px",
-                              marginTop: "10px",
-                              marginBottom: "10px",
-                            }}
-                          >
-                            <Form.Group controlId="formSize">
-                              <div style={{ position: "relative" }}>
-                                <Form.Control
-                                  as="select"
-                                  onChange={(e) =>
-                                    setSelectedSize(e.target.value)
-                                  }
-                                  style={{ paddingRight: "30px" }}
-                                >
-                                  <option value=""> Size</option>
-                                  {product.sizes.map((size) => (
-                                    <option value={size} key={size}>
-                                      {size}
-                                    </option>
-                                  ))}
-                                </Form.Control>
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    right: "10px",
-                                    transform: "translateY(-50%)",
-                                  }}
-                                >
-                                  <FaChevronDown size={20} />
-                                </div>
-                              </div>
-                            </Form.Group>
-                          </Form>
-                        </div>
-                      </div>
-                      <Card.Title
-                        style={{ marginLeft: "20px", width: "195px" }}
-                      >
-                        {product.name}
-                      </Card.Title>
-                      <Button
-                        variant="primary"
-                        onClick={() => setSelectedProduct(product)}
-                      >
-                        View Details
-                      </Button>{" "}
-                      <Button
-                        variant="danger"
-                        onClick={() => handleAddToCart(product, selectedSize)}
-                        disabled={product.quantity >= 5} // maximum allowed quantity is 5
-                      >
-                        {product.quantity >= 5 ? "Out of Stock" : "Add to Cart"}
-                      </Button>
-                    </Card.Body>
-                  </Card>
+                  <ProductCard
+                    product={product}
+                    selectedSize={selectedSize}
+                    setSelectedSize={setSelectedSize}
+                    handleAddToCart={handleAddToCart}
+                    setSelectedProduct={setSelectedProduct}
+                  />
                 </Col>
               ))}
             </Row>
