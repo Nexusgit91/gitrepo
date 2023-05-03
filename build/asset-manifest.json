@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.aef68a1a.css",
-    "main.js": "/static/js/main.0326f30a.js",
+    "main.css": "/static/css/main.53017d70.css",
+    "main.js": "/static/js/main.da2d757a.js",
     "static/media/m1pro.mp4": "/static/media/m1pro.2f25bdf5397fa156ba98.mp4",
     "static/media/raymond.mp4": "/static/media/raymond.3655fc527e3ec6ae22d9.mp4",
     "static/media/apple watch.mp4": "/static/media/apple watch.ba251d9ec09bf5d24e7b.mp4",
@@ -26,11 +26,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.aef68a1a.css.map": "/static/css/main.aef68a1a.css.map",
-    "main.0326f30a.js.map": "/static/js/main.0326f30a.js.map"
+    "main.53017d70.css.map": "/static/css/main.53017d70.css.map",
+    "main.da2d757a.js.map": "/static/js/main.da2d757a.js.map"
   },
   "entrypoints": [
-    "static/css/main.aef68a1a.css",
-    "static/js/main.0326f30a.js"
+    "static/css/main.53017d70.css",
+    "static/js/main.da2d757a.js"
   ]
 }

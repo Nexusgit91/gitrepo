@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../ProductList.css";
-import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronDown } from "react-icons/fa";
@@ -18,12 +18,12 @@ import {
 
 import { dressProducts } from "../Datajson/dressProducts";
 
-import TypingAnimation from "../../TypingAnimation/TypingAnimation";
 import VideoBanner from "../../VideoBanner/VideoBanner";
 import IconGrid from "../../IconGrid/IconGrid";
-import Timer from "../Timer/Timer";
+
 import DressCart from "./DressCart";
 import TimeComponent from "../Timer/TimeComponet";
+import ProductModal from "./ProductModal";
 //Component
 function Dress() {
   const products = dressProducts;
@@ -56,7 +56,6 @@ function Dress() {
     email: "",
     address: "",
   });
-  const [dateTime, setDateTime] = useState("");
 
   // Function to handle adding product to cart
   const handleAddToCart = (product) => {
@@ -325,39 +324,12 @@ function Dress() {
             />
           </Col>
         </Row>
-        <Modal
-          show={selectedProduct !== null}
+
+        <ProductModal
+          selectedProduct={selectedProduct}
           onHide={() => setSelectedProduct(null)}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{selectedProduct?.name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Slider {...settings}>
-              {selectedProduct?.images.map((src, index) => (
-                <div key={index}>
-                  <Image src={src} fluid />
-                </div>
-              ))}
-            </Slider>
-            <p style={{ marginTop: "40px" }}>{selectedProduct?.description}</p>
-            <p>Price: {selectedProduct?.price * 0.9}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setSelectedProduct(null)}
-            >
-              Close
-            </Button>
-            <Button
-              variant="success"
-              onClick={() => handleAddToCart(selectedProduct)}
-            >
-              Add to Cart
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          handleAddToCart={handleAddToCart}
+        />
       </Container>
     </>
   );
